@@ -1,0 +1,13 @@
+news page  
+move down move up icon
+toast
+upvote downvote system/ add favourite system
+coin market - tabular view and pagination
+coin page - links
+coin page - truncate description
+coin market - symbol position on longer names
+search bar
+coingecko events 
+coin exchange
+footer - make use of red button
+otp verification in login
