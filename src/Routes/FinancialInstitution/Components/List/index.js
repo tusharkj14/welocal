@@ -29,7 +29,11 @@ const List = ({}) => {
         setList(res.data);
       })
       .catch((err) => {
-        toast.error(err.response.data);
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("Inv");
       });
   }, [flagToRefetch]);
@@ -52,7 +56,11 @@ const List = ({}) => {
         setFlagToRefetch(!flagToRefetch);
       })
       .catch((err) => {
-        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("approve");
         setFlagToRefetch(!flagToRefetch);
       });
@@ -76,7 +84,11 @@ const List = ({}) => {
         setFlagToRefetch(!flagToRefetch);
       })
       .catch((err) => {
-        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("delete");
         console.error(err);
         setFlagToRefetch(!flagToRefetch);
