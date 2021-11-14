@@ -49,10 +49,9 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
         history.push("/login");
       })
       .catch((err) => {
-        toast.error(err.response.data);
+        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
         toast.dismiss("login");
         setLoading(false);
-        console.log(err);
       });
 
     e.target.reset();

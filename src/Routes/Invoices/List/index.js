@@ -30,10 +30,13 @@ const List = ({}) => {
         toast.dismiss("Inv");
         setList(res.data);
       })
-      .catch((error) => {
-        toast.error(error.response.data);
+      .catch((err) => {
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("Inv");
-        console.error(error);
       });
   }, [flagToRefetch]);
 
@@ -54,10 +57,13 @@ const List = ({}) => {
         toast.dismiss("delete");
         setFlagToRefetch(!flagToRefetch);
       })
-      .catch((error) => {
-        toast.error(error.response.data);
+      .catch((err) => {
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("delete");
-        console.error(error);
         setFlagToRefetch(!flagToRefetch);
       });
   };

@@ -63,10 +63,10 @@ const Login: React.FC<IProps> = ({ setPageToShow }) => {
         history.push("/");
       })
       .catch((err) => {
-        toast.error(err.response.data);
+        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
         toast.dismiss("login");
         setLoading(false);
-        console.log(err);
+        // console.log(err);
       });
   };
 

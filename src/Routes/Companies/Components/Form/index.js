@@ -43,9 +43,8 @@ const Form = ({}) => {
         setInstData(res.data);
         setInstLoading(false);
       })
-      .catch((error) => {
-        console.error(error);
-        toast.error(error.response.data);
+      .catch((err) => {
+        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
         toast.dismiss("finst");
         setInstLoading(false);
       });
@@ -79,9 +78,9 @@ const Form = ({}) => {
         toast.success("File saved successfully");
         toast.dismiss("file");
       })
-      .catch((error) => {
+      .catch((err) => {
         setLoading(false);
-        toast.error(error.response.data);
+        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
         toast.dismiss("file");
       });
   };
