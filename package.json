@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "homepage": "https://mayankdutta.github.io/invorify-frontend",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
