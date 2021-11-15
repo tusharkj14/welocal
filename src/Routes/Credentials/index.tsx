@@ -1,6 +1,7 @@
 import * as React from "react";
 import Login from "./Components/LoginPage";
 import Register from "./Components/RegistrationPage";
+import Canvas  from "../../Components/SineWave/components/canvas";
 
 interface IState {
   pageToShow: string;
@@ -18,7 +19,7 @@ const Credentials = () => {
         <Register setPageToShow={setPageToShow} />
       )}
       <div className="absolute">
-        <div className="h-screen w-screen bg-gray-500" />
+        <Canvas />
       </div>
     </div>
   );

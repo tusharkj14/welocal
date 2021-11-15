@@ -45,7 +45,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full my-4 bg-black ">
+    <div className="w-full bg-black">
       <Disclosure as="nav" className="">
         {({ open }) => (
           <>
@@ -65,12 +65,12 @@ const Navbar = () => {
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
                     <img
-                      className="block lg:hidden h-16 w-auto rounded-full"
+                      className="block lg:hidden h-16 w-auto rounded-full p-2"
                       src={logo}
                       alt="Invorify"
                     />
                     <img
-                      className="hidden lg:block h-16 w-auto mb-1 rounded-full"
+                      className="hidden lg:block h-16 w-auto mb-1 rounded-full p-2"
                       src={logo}
                       alt="Invorify"
                     />
@@ -158,8 +158,8 @@ const Navbar = () => {
                               {({ active }) => (
                                 <a
                                   className={classNames(
-                                    active ? "bg-red-500 text-white" : "",
-                                    "block px-4 py-2 text-sm text-gray-700 cursor-pointer font-sans text-xl font-medium "
+                                    active ? "bg-red-600 text-white" : "",
+                                    "block px-4 py-2 text-sm cursor-pointer font-sans text-xl font-medium "
                                   )}
                                 >
                                   {logStatus}
