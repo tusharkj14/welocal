@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="w-full flex items-center justify-center bg-black">
       <div className="md:w-2/3 w-full px-4 sm:px-12 pb-10 text-white flex flex-col">
         <div className="w-full text-7xl font-bold pt-8 ">
-          <h1 className="w-full md:w-2/3">How can we help you. get in touch</h1>
+          <h1 className="w-full md:w-2/3">How can we help you. Get in touch</h1>
         </div>
         <div className="flex mt-8 flex-col md:flex-row md:justify-between">
           <p className="w-full md:w-2/3 text-gray-400">
@@ -22,7 +22,10 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex flex-col justify-center">
           <div className="flex mt-16 mb-12 sm:px-10 md:px-24 lg:px-44 flex-row items-center justify-around">
-            <a href="https://github.com/" target="_blank">
+            <a
+              href="https://github.com/mayankdutta/invorifyFrontend"
+              target="_blank"
+            >
               <i className="bx bxl-github text-5xl cursor-pointer" />
             </a>
             <a href="https://www.linkedin.com/in/" target="_blank">
@@ -37,7 +40,10 @@ const Footer: React.FC = () => {
           </div>
           <hr className="border-gray-600" />
           <p className="w-full text-center mt-4 text-gray-600">
-            Created by HolyUranus
+            Created by  
+            <span className="ml-1 text-xl font-medium tracking-wider">
+              HolyUranus
+            </span>
           </p>
         </div>
       </div>

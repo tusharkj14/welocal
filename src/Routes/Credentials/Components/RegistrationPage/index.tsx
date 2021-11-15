@@ -12,6 +12,8 @@ interface IProps {
   setPageToShow?: any;
 }
 
+const formHeading = " text-lg tracking-wider font-bold font-sans";
+
 const Register: React.FC<IProps> = ({ setPageToShow }) => {
   const [name, setName] = React.useState("");
   const [userName, setUserName] = React.useState("");
@@ -43,13 +45,19 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
         type,
       })
       .then((res: any) => {
-        toast.success(`Registered as ${res.data.name || ""}`, { duration: 4000 });
+        toast.success(`Registered as ${res.data.name || ""}`, {
+          duration: 4000,
+        });
         toast.dismiss("login");
         setLoading(false);
         history.push("/login");
       })
       .catch((err) => {
-        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("login");
         setLoading(false);
       });
@@ -62,7 +70,11 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
       className="z-50 absolute bg-black shadow-2xl rounded rounded-lg p-12 px-8 flex flex-col justify-center items-center "
       onSubmit={Submit}
     >
-      <img className="h-12 w-auto mb-6" src={logo} alt="Crypto Wiz" />
+      <img
+        className="h-32 w-auto mb-6 rounded-full"
+        src={logo}
+        alt="Invorify"
+      />
       <div className="mb-6">
         <Select
           onChange={(e) => {
@@ -96,7 +108,9 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-200 text-sm font-bold mb-2">
+        <label
+          className={"block text-gray-200 text-sm font-bold mb-2" + formHeading}
+        >
           Name
         </label>
         <input
@@ -109,11 +123,15 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-200 text-sm font-bold mb-2">
+        <label
+          className={"block text-gray-200 text-sm font-bold mb-2" + formHeading}
+        >
           Username
         </label>
         <input
-          className="w-64 shadow appearance-none border rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+          className={
+            "w-64 shadow appearance-none border rounded py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+          }
           id="username"
           placeholder="Enter Username"
           value={userName}
@@ -122,7 +140,9 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-200 text-sm font-bold mb-2">
+        <label
+          className={"block text-gray-200 text-sm font-bold mb-2" + formHeading}
+        >
           Password
         </label>
         <input
@@ -146,15 +166,16 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
             bgc="white"
             color="white"
             colorh="white"
-            classes="w-64 h-8 bg-gray-800"
+            classes={"w-64 h-8 bg-gray-800" + formHeading}
           >
             Register
           </Button>
         )}
       </div>
       <p
-        className="font-light antialiased text-md cursor-pointer
-        text-gray-400 hover:text-gray-200"
+        className={
+          "font-light antialiased text-md cursor-pointer text-gray-400 hover:text-gray-200"
+        }
         onClick={() => {
           setPageToShow("login");
         }}
