@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import LandingPage from "./LandingPage";
 import Credentials from "./Credentials";
 import Navbar from "../Components/Navbar";

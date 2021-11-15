@@ -13,12 +13,8 @@ const LandingPage = () => {
   }, []);
   if (!timedOut) {
     return (
-      <div className="h-full w-full bg-white flex justify-center items-center">
-        <img
-          className="object-contain h-screen w-auto"
-          src={logo}
-          alt="Invo"
-        />
+      <div className="h-full w-full bg-white flex justify-center items-center animate-pulse">
+        <img className="object-contain h-screen w-auto" src={logo} alt="Invo" />
       </div>
     );
   } else if (!localStorage.getItem("jwt")) {

@@ -44,8 +44,19 @@ const Navbar = () => {
     localStorage.setItem("user", "");
   };
 
+  const [background, setBackground] = React.useState("bg-black");
+
+  // React.useEffect(() => {
+  //   console.log(type);
+  //   if (type === "companies") {
+  //     setBackground("bg-green-700");
+  //   } else {
+  //     setBackground("bg-blue-600");
+  //   }
+  // }, []);
+
   return (
-    <div className="w-full bg-black">
+    <div className={"w-full " + background}>
       <Disclosure as="nav" className="">
         {({ open }) => (
           <>

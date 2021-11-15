@@ -6,6 +6,7 @@ import moment from "moment";
 const formHeading =
   " text-base tracking-wider font-bold font-sans px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider";
 const inputCss = "focus:outline-none focus:ring-4 focus:ring-green-600";
+
 const List = ({}) => {
   const [list, setList] = React.useState([]);
   const [flagToRefetch, setFlagToRefetch] = React.useState(false);
@@ -180,7 +181,7 @@ const List = ({}) => {
                         {item.status === "pending" ? (
                           <a
                             onClick={() => {
-                              Approve(item._id);
+                              Approve(item.id);
                             }}
                             className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
                           >
@@ -194,7 +195,7 @@ const List = ({}) => {
                         {item.status === "pending" ? (
                           <a
                             onClick={() => {
-                              Delete(item._id);
+                              Delete(item.id);
                             }}
                             className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
                           >

@@ -37,14 +37,17 @@ const Form = ({}) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         toast.success("Financial Institutions Fetched");
         toast.dismiss("finst");
         setInstData(res.data);
         setInstLoading(false);
       })
       .catch((err) => {
-        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("finst");
         setInstLoading(false);
       });
@@ -73,14 +76,17 @@ const Form = ({}) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setLoading(false);
         toast.success("File saved successfully");
         toast.dismiss("file");
       })
       .catch((err) => {
         setLoading(false);
-        toast.error(err && err.response && err.response.data ? err.response.data : "An error occurred");
+        toast.error(
+          err && err.response && err.response.data
+            ? err.response.data
+            : "An error occurred"
+        );
         toast.dismiss("file");
       });
   };

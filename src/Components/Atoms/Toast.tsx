@@ -21,15 +21,15 @@ const Toast: React.FC = () => {
         },
       }}
     >
-      {(t) => (
-        <ToastBar toast={t} position="bottom-left">
+      {(items) => (
+        <ToastBar toast={items} position="bottom-left">
           {({ icon = "", message = "" }: any) => (
             <>
               <div
                 className={`bg-${
-                  t.type === "success"
+                  items.type === "success"
                     ? "green-500"
-                    : t.type === "error"
+                    : items.type === "error"
                     ? "red-500"
                     : "gray-500"
                 } h-full w-2 rounded-l-lg`}
@@ -37,9 +37,9 @@ const Toast: React.FC = () => {
               <div className="flex items-center justify-between py-2 px-3">
                 {icon}
                 {message}
-                {t.type !== "loading" && (
+                {items.type !== "loading" && (
                   <i
-                    onClick={() => toast.dismiss(t.id)}
+                    onClick={() => toast.dismiss(items.id)}
                     className="bx bx-x ml-2 text-2xl text-gray-500 hover:text-white"
                   />
                 )}
