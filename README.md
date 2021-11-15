@@ -1,7 +1,8 @@
 # Invorify
 
-- act as an bridge between compnaies and financial institutions.
-- plagiarism detection of invoices
+- A web app which acts as a bridge between Companies and Financial institutions to facilitate Invoice Discounting.
+- Detects attempts to double discount.
+- Provides a seperate login window for both parties.
 
 **Login / Register page**
 ![1](https://user-images.githubusercontent.com/33067129/141725130-b8bdda55-30dc-4ed8-b1ff-b5b27e8f7d18.png)
