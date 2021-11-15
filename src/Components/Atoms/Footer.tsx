@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
           </div>
           <hr className="border-gray-600" />
           <p className="w-full text-center mt-4 text-gray-600">
-            Created by  
+            Created by
             <span className="ml-1 text-xl font-medium tracking-wider">
               HolyUranus
             </span>

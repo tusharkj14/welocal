@@ -77,7 +77,7 @@ const Login: React.FC<IProps> = ({ setPageToShow }) => {
       onSubmit={Submit}
     >
       <img
-        className="h-32 w-auto mb-6 rounded-full"
+        className="h-32 w-auto mb-6 rounded-full "
         src={logo}
         alt="Crypto Wiz"
       />
