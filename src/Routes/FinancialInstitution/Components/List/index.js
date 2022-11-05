@@ -10,14 +10,16 @@ const inputCss = "focus:outline-none focus:ring-4 focus:ring-green-600";
 const List = ({}) => {
   const [list, setList] = React.useState([]);
   const [flagToRefetch, setFlagToRefetch] = React.useState(false);
+  const [isApplyingId, setIsApplyingId] = React.useState(null);
+  const [price, setPrice] = React.useState(0);
 
   React.useEffect(() => {
     toast.loading("Fetching Invoices", { id: "Inv" });
-    let finId = JSON.parse(localStorage.getItem("user"))._id;
+    let jobType = JSON.parse(localStorage.getItem("user")).jobType;
     axios
       .post(
         `${process.env.REACT_APP_SERVER_LINK}/file/fetchInvFinancial`,
-        { finId },
+        { jobType },
         {
           headers: {
             Authorization: JSON.parse(localStorage.getItem("jwt")),
@@ -39,12 +41,13 @@ const List = ({}) => {
       });
   }, [flagToRefetch]);
 
-  const Approve = (id) => {
+  const Apply = (id) => {
     toast.loading("Approving", { id: "approve" });
+    let applierId = JSON.parse(localStorage.getItem("user"))._id;
     axios
       .post(
         `${process.env.REACT_APP_SERVER_LINK}/file/ApproveInvoice`,
-        { id },
+        { id, applierId , biddingPrice : price },
         {
           headers: {
             Authorization: JSON.parse(localStorage.getItem("jwt")),
@@ -96,9 +99,11 @@ const List = ({}) => {
       });
   };
 
+  console.log(list)
+
   return (
     <div
-      className="flex flex-col sm:w-4/5 lg:w-1/2 w-full my-12 
+      className="flex flex-col sm:w-4/5 lg:w-3/4 w-full my-12
     min-h-1/2 border shadow-lg "
     >
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -155,7 +160,13 @@ const List = ({}) => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {item.invoice || "N/A"}
+                        {item.jobType || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {item.price || "N/A"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {item.description || "N/A"}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
@@ -169,40 +180,40 @@ const List = ({}) => {
                         </span>
                       </td>
                       <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Show PDF
-                        </a>
-                      </td>
-                      <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        {console.log(item.userPdf.data)}
                         {item.status === "pending" ? (
-                          <a
-                            onClick={() => {
-                              Approve(item.id);
-                            }}
-                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
-                          >
-                            Approve
-                          </a>
+                            <div>
+                              {isApplyingId === item._id &&  <input
+                                  className={
+                                      "w-16 mr-2 shadow appearance-none border rounded py-2 px-3 text-gray-800 leading-tight "
+                                  }
+                                  type="number"
+                                  id="Price"
+                                  placeholder="Enter Price"
+                                  value={price}
+                                  onChange={(e) => setPrice(e.target.value)}
+                                  required
+                              /> }
+                              {isApplyingId === item._id ? <a
+                                  onClick={() => {
+                                    console.log(item)
+                                    Apply(item._id);
+                                  }}
+                                  className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                              >
+                                Done
+                              </a> :
+                                  <a
+                                      onClick={() => {
+                                        console.log(item)
+                                        setIsApplyingId(item._id)
+                                      }}
+                                      className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                                  >
+                                    Apply
+                                  </a>}
+                            </div>
                         ) : (
-                          <a className="text-gray-400">Approved</a>
-                        )}
-                      </td>
-                      <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        {item.status === "pending" ? (
-                          <a
-                            onClick={() => {
-                              Delete(item.id);
-                            }}
-                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
-                          >
-                            Delete
-                          </a>
-                        ) : (
-                          <a className="text-gray-400">Delete</a>
+                          <a className="text-gray-400">Applied</a>
                         )}
                       </td>
                     </tr>

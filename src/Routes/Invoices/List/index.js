@@ -43,34 +43,62 @@ const List = ({}) => {
   const Delete = (id) => {
     toast.loading("Deleting", { id: "delete" });
     axios
-      .post(
-        `${process.env.REACT_APP_SERVER_LINK}/file/DeleteInvoice`,
-        { id },
-        {
-          headers: {
-            Authorization: JSON.parse(localStorage.getItem("jwt")),
-          },
-        }
-      )
-      .then((res) => {
-        toast.success("Deleted");
-        toast.dismiss("delete");
-        setFlagToRefetch(!flagToRefetch);
-      })
-      .catch((err) => {
-        toast.error(
-          err && err.response && err.response.data
-            ? err.response.data
-            : "An error occurred"
-        );
-        toast.dismiss("delete");
-        setFlagToRefetch(!flagToRefetch);
-      });
+        .post(
+            `${process.env.REACT_APP_SERVER_LINK}/file/DeleteInvoice`,
+            { id },
+            {
+              headers: {
+                Authorization: JSON.parse(localStorage.getItem("jwt")),
+              },
+            }
+        )
+        .then((res) => {
+          toast.success("Deleted");
+          toast.dismiss("delete");
+          setFlagToRefetch(!flagToRefetch);
+        })
+        .catch((err) => {
+          toast.error(
+              err && err.response && err.response.data
+                  ? err.response.data
+                  : "An error occurred"
+          );
+          toast.dismiss("delete");
+          setFlagToRefetch(!flagToRefetch);
+        });
+  };
+
+  const Accept = (id) => {
+    toast.loading("Accept", { id: "accept" });
+    axios
+        .post(
+            `${process.env.REACT_APP_SERVER_LINK}/file/AcceptInvoice`,
+            { id },
+            {
+              headers: {
+                Authorization: JSON.parse(localStorage.getItem("jwt")),
+              },
+            }
+        )
+        .then((res) => {
+          toast.success("Accepted");
+          toast.dismiss("accept");
+          setFlagToRefetch(!flagToRefetch);
+        })
+        .catch((err) => {
+          toast.error(
+              err && err.response && err.response.data
+                  ? err.response.data
+                  : "An error occurred"
+          );
+          toast.dismiss("sccept");
+          setFlagToRefetch(!flagToRefetch);
+        });
   };
 
   return (
     <div
-      className="flex flex-col sm:w-4/5 lg:w-1/2 w-full my-12 
+      className="flex flex-col sm:w-4/5 lg:w-3/4 w-full my-12
     min-h-1/2 border shadow-lg "
     >
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -96,6 +124,8 @@ const List = ({}) => {
                   </th>
                   <th scope="col" />
                   <th scope="col" />
+                  <th scope="col"  className={formHeading}> Bidder </th>
+                  <th scope="col" className={formHeading} > Bidding Price </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -117,16 +147,16 @@ const List = ({}) => {
                         <div className="flex items-center">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {item.financial.name || "N/A"}
+                              {item.jobType || "N/A"}
                             </div>
                             <div className="text-sm text-gray-500">
-                              {item.financial.userName || "N/A"}
+                              {item.description || "N/A"}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {item.invoice || "N/A"}
+                        {item.price || "N/A"}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
@@ -141,22 +171,40 @@ const List = ({}) => {
                       </td>
                       <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
+                            onClick={() => {
+                              Accept(item._id);
+                            }}
+                            className={item?.status ==='Applied' ? "text-indigo-600 hover:text-indigo-900 cursor-pointer" : "text-gray-400"}
                         >
-                          Show PDF
+                          Accept
                         </a>
                       </td>
                       <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
-                          onClick={() => {
-                            Delete(item._id);
-                          }}
-                          className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
+                            onClick={() => {
+                              Delete(item._id);
+                            }}
+                            className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
                         >
                           Delete
                         </a>
                       </td>
+                      {item.status !== 'pending' ? <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div>
+                            <div className="text-sm font-medium text-gray-900">
+                              {item.applierId?.name || "N/A"}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {item.applierId?.userName || "N/A"}
+                            </div>
+                          </div>
+                        </div>
+                      </td> : <td></td>}
+                      {item.status !== 'pending' ?
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.biddingPrice || "N/A"}
+                          </td> : <td></td>}
                     </tr>
                   );
                 })}

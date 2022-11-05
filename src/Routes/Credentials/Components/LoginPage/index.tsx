@@ -33,7 +33,7 @@ const Login: React.FC<IProps> = ({ setPageToShow }) => {
     return <Redirect to="/" />;
   }
 
-  const userType = ["financial institution", "user"];
+  const userType = ["handyman", "user"];
 
   const options: any = [];
 
