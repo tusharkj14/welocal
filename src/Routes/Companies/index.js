@@ -1,6 +1,6 @@
 import Form from "./Components/Form";
 
-const Companies = () => {
+const User = () => {
   return (
     <div className="flex flex-wrap items-center justify-center w-full pt-20 pb-5">
       <Form />
@@ -8,4 +8,4 @@ const Companies = () => {
   );
 };
 
-export default Companies;
+export default User;

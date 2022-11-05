@@ -20,9 +20,9 @@ const LandingPage = () => {
   } else if (!localStorage.getItem("jwt")) {
     return <Redirect to="/credentials" />;
   } else if (
-    JSON.parse(localStorage.getItem("user") as string).type === "companies"
+    JSON.parse(localStorage.getItem("user") as string).type === "user"
   ) {
-    return <Redirect to="/Companies" />;
+    return <Redirect to="/User" />;
   } else {
     return <Redirect to="/FinancialInstitution" />;
   }

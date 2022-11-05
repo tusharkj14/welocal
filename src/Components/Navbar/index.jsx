@@ -19,15 +19,15 @@ const Navbar = () => {
 
   const navigation = [
     {
-      name: type === "companies" ? "Companies" : "Financial Institution",
-      href: type === "companies" ? "/Companies" : "/FinancialInstitution",
+      name: type === "user" ? "User" : "Financial Institution",
+      href: type === "user" ? "/User" : "/FinancialInstitution",
       current:
-        location.pathname === "/Companies" ||
-        location.pathname === "/FinancialInstitution",
+          location.pathname === "/User" ||
+          location.pathname === "/FinancialInstitution",
     },
   ];
 
-  if (type === "companies") {
+  if (type === "user") {
     navigation.push({
       name: "Invoices",
       href: "/Invoices",
@@ -48,7 +48,7 @@ const Navbar = () => {
 
   // React.useEffect(() => {
   //   console.log(type);
-  //   if (type === "companies") {
+  //   if (type === "user") {
   //     setBackground("bg-green-700");
   //   } else {
   //     setBackground("bg-blue-600");

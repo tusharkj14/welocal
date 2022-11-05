@@ -25,7 +25,7 @@ const inputCss = "focus:outline-none focus:ring-4 focus:ring-green-600";
 const Login: React.FC<IProps> = ({ setPageToShow }) => {
   const [userName, setUserName] = React.useState<IState["userName"]>("");
   const [password, setPassword] = React.useState<IState["password"]>("");
-  const [type, setType] = React.useState<string | undefined>("companies");
+  const [type, setType] = React.useState<string | undefined>("user");
   const [loading, setLoading] = React.useState<IState["loading"]>(false);
   const history = useHistory();
 
@@ -33,7 +33,7 @@ const Login: React.FC<IProps> = ({ setPageToShow }) => {
     return <Redirect to="/" />;
   }
 
-  const userType = ["financial institution", "companies"];
+  const userType = ["financial institution", "user"];
 
   const options: any = [];
 
@@ -87,7 +87,7 @@ const Login: React.FC<IProps> = ({ setPageToShow }) => {
             setType(e?.value);
           }}
           options={userTypeToOption(userType)}
-          defaultValue={{ label: "companies", value: "companies" }}
+          defaultValue={{ label: "user", value: "user" }}
           className="text-white w-64"
           theme={(theme) => ({
             ...theme,

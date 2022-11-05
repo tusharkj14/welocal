@@ -18,11 +18,11 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
   const [name, setName] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [type, setType] = React.useState<string | undefined>("companies");
+  const [type, setType] = React.useState<string | undefined>("user");
   const [loading, setLoading] = React.useState(false);
   const history = useHistory();
 
-  const userType = ["financial institution", "companies"];
+  const userType = ["financial institution", "user"];
 
   const options: any = [];
 
@@ -81,7 +81,7 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
             setType(e?.value);
           }}
           options={userTypeToOption(userType)}
-          defaultValue={{ label: "companies", value: "companies" }}
+          defaultValue={{ label: "user", value: "user" }}
           className="text-white w-64"
           theme={(theme) => ({
             ...theme,

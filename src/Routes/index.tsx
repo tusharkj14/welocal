@@ -12,11 +12,11 @@ const Routes = () => {
   return (
     <Router>
       <Route
-        path={["/FinancialInstitution", "/Companies", "/Invoices"]}
+        path={["/FinancialInstitution", "/User", "/Invoices"]}
         component={Navbar}
       />
       <Switch>
-        <Route path="/Companies" exact component={Companies} />
+        <Route path="/User" exact component={Companies} />
         <Route path="/Invoices" exact component={Invoices} />
         <Route
           path="/FinancialInstitution"
@@ -28,7 +28,7 @@ const Routes = () => {
       </Switch>
       <Toast />
       <Route
-        path={["/Companies", "/FinancialInstitution", "/Invoices"]}
+        path={["/User", "/FinancialInstitution", "/Invoices"]}
         component={Footer}
       />
     </Router>
