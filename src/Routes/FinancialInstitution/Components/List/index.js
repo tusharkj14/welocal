@@ -6,7 +6,8 @@ import moment from "moment";
 const formHeading =
   " text-base tracking-wider font-bold font-sans px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider";
 const inputCss = "focus:outline-none focus:ring-4 focus:ring-green-600";
-
+console.log("Ashu");
+console.log(formHeading);
 const List = ({}) => {
   const [list, setList] = React.useState([]);
   const [flagToRefetch, setFlagToRefetch] = React.useState(false);
@@ -14,7 +15,7 @@ const List = ({}) => {
   const [price, setPrice] = React.useState(0);
 
   React.useEffect(() => {
-    toast.loading("Fetching Invoices", { id: "Inv" });
+    toast.loading("Fetching Jobs", { id: "Inv" });
     let jobType = JSON.parse(localStorage.getItem("user")).jobType;
     axios
       .post(
@@ -27,7 +28,7 @@ const List = ({}) => {
         }
       )
       .then((res) => {
-        toast.success("Invoices Fetched");
+        toast.success("Jobs Fetched");
         toast.dismiss("Inv");
         setList(res.data);
       })
@@ -119,16 +120,20 @@ const List = ({}) => {
                     Date
                   </th>
                   <th scope="col" className={formHeading}>
-                    Company Name
+                    Employer
                   </th>
                   <th scope="col" className={formHeading}>
-                    Invoice No.
+                    Job Type
+                  </th>
+                  <th scope="col" className={formHeading}>
+                    Offered Price
+                  </th>
+                  <th scope="col" className={formHeading}>
+                    Job Description
                   </th>
                   <th scope="col" className={formHeading}>
                     Status
                   </th>
-                  <th scope="col" />
-                  <th scope="col" />
                   <th scope="col" />
                 </tr>
               </thead>

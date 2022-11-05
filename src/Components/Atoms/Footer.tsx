@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           <p className="w-full text-center mt-4 text-gray-600">
             Created by
             <span className="ml-1 text-xl font-medium tracking-wider">
-              HolyUranus
+              PaneerBits
             </span>
           </p>
         </div>

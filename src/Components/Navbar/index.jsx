@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const navigation = [
     {
-      name: type === "user" ? "User" : "Financial Institution",
+      name: type === "user" ? "User" : "Jobs",
       href: type === "user" ? "/User" : "/FinancialInstitution",
       current:
           location.pathname === "/User" ||
@@ -29,7 +29,7 @@ const Navbar = () => {
 
   if (type === "user") {
     navigation.push({
-      name: "Invoices",
+      name: "Jobs Created",
       href: "/Invoices",
       current: location.pathname === "/Invoices",
     });

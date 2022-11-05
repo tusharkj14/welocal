@@ -12,7 +12,7 @@ const List = ({}) => {
   const [flagToRefetch, setFlagToRefetch] = React.useState(false);
 
   React.useEffect(() => {
-    toast.loading("Fetching Invoices", { id: "Inv" });
+    toast.loading("Fetching Jobs", { id: "Inv" });
     let userId = JSON.parse(localStorage.getItem("user"))._id;
     axios
       .post(
@@ -26,7 +26,7 @@ const List = ({}) => {
       )
       .then((res) => {
         console.log(res.data);
-        toast.success("Invoices Fetched");
+        toast.success("Jobs Fetched");
         toast.dismiss("Inv");
         setList(res.data);
       })
@@ -114,17 +114,17 @@ const List = ({}) => {
                     Date
                   </th>
                   <th scope="col" className={formHeading}>
-                    Financial Institute
+                    Job Type & Description
                   </th>
                   <th scope="col" className={formHeading}>
-                    Invoice No.
+                    Price
                   </th>
                   <th scope="col" className={formHeading}>
                     Status
                   </th>
                   <th scope="col" />
                   <th scope="col" />
-                  <th scope="col"  className={formHeading}> Bidder </th>
+                  <th scope="col"  className={formHeading}> Bidder Details </th>
                   <th scope="col" className={formHeading} > Bidding Price </th>
                 </tr>
               </thead>
