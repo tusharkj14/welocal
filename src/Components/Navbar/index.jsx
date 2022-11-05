@@ -114,7 +114,7 @@ const Navbar = () => {
                       <>
                         <div>
                           <Menu.Button
-                            className="bg-gray-800 flex text-sm rounded-full 
+                            className="bg-gray-800 flex text-sm rounded-full
                           outline-none ring-2 ring-gray-500"
                           >
                             <span className="sr-only">Open user menu</span>
@@ -142,7 +142,7 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="#"
+                                  href="/Profiles"
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700 font-sans text-xl font-medium "
