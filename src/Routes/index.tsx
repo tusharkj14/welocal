@@ -13,15 +13,15 @@ const Routes = () => {
     return (
         <Router>
             <Route
-                path={["/FinancialInstitution", "/User", "/Invoices", "/Profiles"]}
+                path={["/Jobs", "/User", "/JobsCreated", "/Profiles"]}
                 component={Navbar}
             />
             <Switch>
                 <Route path="/User" exact component={Companies}/>
                 <Route path="/Profiles" exact component={Profiles}/>
-                <Route path="/Invoices" exact component={Invoices}/>
+                <Route path="/JobsCreated" exact component={Invoices}/>
                 <Route
-                    path="/FinancialInstitution"
+                    path="/Jobs"
                     exact
                     component={FinancialInstitution}
                 />
@@ -30,7 +30,7 @@ const Routes = () => {
             </Switch>
             <Toast/>
             <Route
-                path={["/User", "/FinancialInstitution", "/Invoices", "/Profiles"]}
+                path={["/User", "/Jobs", "/JobsCreated", "/Profiles"]}
                 component={Footer}
             />
         </Router>

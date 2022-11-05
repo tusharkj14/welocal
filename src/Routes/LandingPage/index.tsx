@@ -25,7 +25,7 @@ const LandingPage = () => {
     ) {
         return <Redirect to="/User"/>;
     } else {
-        return <Redirect to="/FinancialInstitution"/>;
+        return <Redirect to="/Jobs"/>;
     }
 };
 

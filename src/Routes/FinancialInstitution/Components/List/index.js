@@ -2,6 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import moment from "moment";
+import ProfileButton from "../../../Profiles/ProfileButton";
 
 const formHeading =
   " text-base tracking-wider font-bold font-sans px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider";
@@ -153,16 +154,7 @@ const List = ({}) => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div>
-                            <div className="text-sm font-medium text-gray-900">
-                              {item.userId.name || "N/A"}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {item.userId.userName || "N/A"}
-                            </div>
-                          </div>
-                        </div>
+                        <ProfileButton user={item.userId}/>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {item.jobType || "N/A"}
@@ -174,15 +166,22 @@ const List = ({}) => {
                         {item.description || "N/A"}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span
-                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            item.status === "pending"
-                              ? "bg-red-100 text-red-800"
-                              : "bg-green-100 text-green-800"
-                          }`}
-                        >
+
+                        <div className="flex items-center flex-col">
+                          <span
+                              className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                  item.status === "pending"
+                                      ? "bg-red-100 text-red-800"
+                                      : "bg-green-100 text-green-800"
+                              }`}
+                          >
                           {item.status || "N/A"}
                         </span>
+                          {item.status === 'Accepted By User' && <div className="text-sm font-bold text-gray-500">
+                            8130270275
+                          </div>}
+                        </div>
+
                       </td>
                       <td className="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         {item.status === "pending" ? (
