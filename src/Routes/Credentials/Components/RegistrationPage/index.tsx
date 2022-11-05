@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import logo from "../../../../utils/logo.png";
 import { Button } from "../../../../Components/Atoms";
 import { Spinner } from "../../../../Components/Atoms";
+import getJobType from '../../../../utils/getJobType'
 import Select from "react-select";
 
 interface IProps {
@@ -19,14 +20,15 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
   const [userName, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [type, setType] = React.useState<string | undefined>("user");
+  const [jobType, setJobType] = React.useState<string | undefined>("Technician");
   const [loading, setLoading] = React.useState(false);
   const history = useHistory();
 
-  const userType = ["financial institution", "user"];
+  const userType = ["handyman", "user"];
 
-  const options: any = [];
 
   const userTypeToOption = (userType: any) => {
+    let options: any = [];
     userType.map((curr: any) => {
       options.push({ value: curr, label: curr });
     });
@@ -37,13 +39,18 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
     e.preventDefault();
     setLoading(true);
     toast.loading("Logging In", { id: "login" });
+    let body = {
+      name,
+      userName,
+      password,
+      type,
+    }
+    if (type === 'handyman' && jobType) {
+      // @ts-ignore
+      body = {...body, jobType}
+    }
     axios
-      .post(`${process.env.REACT_APP_SERVER_LINK}/register/`, {
-        name,
-        userName,
-        password,
-        type,
-      })
+      .post(`${process.env.REACT_APP_SERVER_LINK}/register/`, body)
       .then((res: any) => {
         toast.success(`Registered as ${res.data.name || ""}`, {
           duration: 4000,
@@ -139,6 +146,40 @@ const Register: React.FC<IProps> = ({ setPageToShow }) => {
           required
         />
       </div>
+      {type === 'handyman' &&
+
+          <div className="mb-6">
+            <Select
+                onChange={(e) => {
+                  setJobType(e?.value);
+                }}
+                options={userTypeToOption(getJobType())}
+                defaultValue={{ label: "Technician", value: "Technician" }}
+                className="text-white w-64"
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 2,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "rgba(255,255,255,0.25)",
+                    primary50: "rgba(255,255,255,0.50)",
+                    primary75: "rgba(255,255,255,0.75)",
+                    primary: "rgba(255,255,255,1)",
+                    neutral0: "rgba(25,25,25,1)",
+                    neutral5: "rgba(255,255,255,0.05)",
+                    neutral10: "rgba(255,255,255,0.1)",
+                    neutral20: "rgba(255,255,255,0.2)",
+                    neutral30: "rgba(255,255,255,0.3)",
+                    neutral40: "rgba(255,255,255,0.4)",
+                    neutral50: "rgba(255,255,255,0.5)",
+                    neutral60: "rgba(255,255,255,0.6)",
+                    neutral70: "rgba(255,255,255,0.7)",
+                    neutral80: "rgba(255,255,255,0.8)",
+                    neutral90: "rgba(255,255,255,0.9)",
+                  },
+                })}
+            />
+          </div>}
       <div className="mb-6">
         <label
           className={"block text-gray-200 text-sm font-bold mb-2" + formHeading}
