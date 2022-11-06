@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,7 +24,7 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 2px;
+  border-radius: 1.9px;
 }
 
 ::-webkit-scrollbar-thumb {
