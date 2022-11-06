@@ -8,4 +8,5 @@ const FinancialInstitution = () => {
   );
 };
 
+
 export default FinancialInstitution;
