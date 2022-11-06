@@ -21,3 +21,5 @@ const Modal: React.FC<IProps> = ({ children, toggle, classes }) => {
 };
 
 export default Modal;
+
+  
