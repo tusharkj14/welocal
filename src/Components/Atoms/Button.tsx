@@ -56,5 +56,6 @@ const Button: React.FC<IProps> = ({
     </button>
   );
 };
+  
 
 export default Button;
