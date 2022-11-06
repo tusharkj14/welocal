@@ -9,3 +9,4 @@ export const setCurrentCurrency = (currency: string | undefined) => {
     payload: currency,
   };
 };
+
