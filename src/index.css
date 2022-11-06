@@ -24,7 +24,7 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 1.9px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
