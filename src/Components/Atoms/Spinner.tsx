@@ -21,5 +21,6 @@ const Spinner: React.FC<IProps> = ({
     </>
   );
 };
+  
 
 export default Spinner;
