@@ -3,4 +3,5 @@ export interface ISetCurrency {
   payload: string | undefined;
 }
 
+
 export type CurrencyDispatchTypes = ISetCurrency;
