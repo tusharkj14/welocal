@@ -4,3 +4,4 @@ export interface ISetUser {
 }
 
 export type UserDispatchTypes = ISetUser;
+
