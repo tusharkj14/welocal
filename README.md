@@ -5,4 +5,4 @@
 - Aimed at low scale businesses like lawn mower, electrician.
 - Provides a seperate login window for both parties.
 
-[Complete Description for Hack-a-noodle 2022]([https://www.canva.com/design/DAFRD9IApfQ/oJExxflcdBRjmFMymwn-TA/edit?utm_content=DAFRD9IApfQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://imgur.com/a/nDKHBsJ))
+[Complete Description for Hack-a-noodle 2022](https://imgur.com/a/nDKHBsJ)
